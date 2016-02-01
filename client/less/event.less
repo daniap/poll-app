@@ -1,0 +1,56 @@
+
+
+// body bg
+body::before {
+    background-image: url('../img/run-bg.jpg');
+    background-size: cover;
+      background-attachment: fixed;
+      content: '';
+      will-change: transform;
+      z-index: -1;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      position: fixed;
+}
+
+// main app container
+#appContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  flex-shrink: 0;
+}
+
+// evnt block
+.poll-wide-card {
+    width: 100%;
+    .mdl-card__title {
+        color: white;
+        height: 180px;
+        background-color: #57575D;
+    }
+    .meta {
+        min-height: 36px;
+        strong {
+            display: block;
+            clear: both;
+        }
+    }
+    .vote-cont {
+        display: none;
+    }
+    .vote-form {
+        label {
+            display: block;
+        }
+    }
+    .result-cont {
+
+    }
+    .mdl-card__actions {
+        button {
+            float: right;
+        }
+    }
+}
