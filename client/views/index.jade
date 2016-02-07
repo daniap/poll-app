@@ -1,76 +1,74 @@
 doctype html
 html
-  head    
-    title Some title    
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    link(rel="stylesheet" link href='https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en')
-    link(rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.brown-orange.min.css")    
-    link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
-    script(src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js")
-    
-    link(rel='stylesheet', href='/css/styles.css')
-    
-  body
-    .mdl-layout.mdl-js-layout.mdl-layout--fixed-header
-        header.mdl-layout__header
-            .mdl-layout__header-row
-                .mdl-layout__title SPORTS POLLS
-                .mdl-layout-spacer
+    head
+        title Some title
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" link href='https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en')
+        link(rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.brown-orange.min.css")
+        link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
+        script(src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js")
+        script(src="https://www.google.com/jsapi")
+
+        link(rel='stylesheet', href='/css/styles.css')
+
+    body
+        .mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+            header.mdl-layout__header
+                .mdl-layout__header-row
+                    .mdl-layout__title SPORTS POLLS
+                    .mdl-layout-spacer
+                    nav.mdl-navigation
+                        a.mdl-navigation__link(href="#") Home
+                        a.mdl-navigation__link(href="#") About
+                        a.mdl-navigation__link(href="#") User
+            .mdl-layout__drawer
+                .mdl-layout__title BASE LAYOUT
                 nav.mdl-navigation
                     a.mdl-navigation__link(href="#") Home
                     a.mdl-navigation__link(href="#") About
                     a.mdl-navigation__link(href="#") User
-        .mdl-layout__drawer
-            .mdl-layout__title BASE LAYOUT
-            nav.mdl-navigation
-                a.mdl-navigation__link(href="#") Home
-                a.mdl-navigation__link(href="#") About
-                a.mdl-navigation__link(href="#") User
-        main.mdl-layout__content
-            #appContainer
-                
-            footer.mdl-mini-footer
-                .mdl-mini-footer__left-section
-                    .mdl-logo Sports Pools
-                .mdl-mini-footer__right-section
-                    ul.mdl-mini-footer__link-list
-                        li 
-                            a(href="#") Privacy & Terms
-                        
-        script(src="/js/lib/underscore-min.js")
-        script(src="/js/lib/jquery-2.2.0.min.js")
-        script(src="/js/lib/backbone-min.js")
-        script(src="/js/lib/handlebars-v4.0.5.js")
-        script(src="/js/client.js")
-        script(src="/js/init.js")
-        script(id="eventstemplate", type="text/x-handlebars-template")
-            .mdl-card.mdl-shadow--2dp.poll-wide-card
-                .mdl-card__title 
-                    h3.mdl-card__title-text
-                        | {{awayName}}
-                        br
-                        | {{homeName}}
-                .mdl-card__supporting-text.mdl-color-text--grey-600
-                    .meta
-                        strong {{group}}
-                        strong {{start}}                    
-                .mdl-card__actions.mdl-card--border
-                    .vote-cont
-                    form.vote-form(data-form="{{objectId}}")
-                        label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='{{objectId}}-1')
-                          input.mdl-radio__button(id="{{objectId}}-1" type='radio', name="vote", value='{{awayName}}')
-                          span.mdl-radio__label {{awayName}}
-                        label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='{{objectId}}-2')
-                          input.mdl-radio__button(id="{{objectId}}-2" type='radio', name="vote", value='draw')
-                          span.mdl-radio__label Draw
-                        label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='{{objectId}}-3')
-                          input.mdl-radio__button(id="{{objectId}}-3" type='radio', name="vote", value='{{homeName}}')
-                          span.mdl-radio__label {{homeName}}
-                        .result-cont
-                        .mdl-card__actions.mdl-card--border
-                            button.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--accent.call-vote(type="submit") Vote
-                    
-                                      
+            main.mdl-layout__content
+                #appContainer
 
-        
-    
+                footer.mdl-mini-footer
+                    .mdl-mini-footer__left-section
+                        .mdl-logo Sports Pools
+                    .mdl-mini-footer__right-section
+                        ul.mdl-mini-footer__link-list
+                            li
+                                a(href="#") Privacy & Terms
+
+            script(src="/js/lib/underscore-min.js")
+            script(src="/js/lib/jquery-2.2.0.min.js")
+            script(src="/js/lib/backbone-min.js")
+            script(src="/js/lib/handlebars-v4.0.5.js")
+
+            script(id="eventsTemplate", type="text/x-handlebars-template")
+                .mdl-card.mdl-shadow--2dp.poll-wide-card
+                    .mdl-card__title
+                        h3.mdl-card__title-text
+                            | {{awayName}}
+                            br
+                            | {{homeName}}
+                    .mdl-card__supporting-text.mdl-color-text--grey-600
+                        .meta
+                            strong {{group}}
+                            strong {{start}}
+                    .mdl-card__actions.mdl-card--border
+                        .vote-cont
+                        form.vote-form(data-form="{{objectId}}")
+                            label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='{{objectId}}-1')
+                                input.mdl-radio__button(id="{{objectId}}-1" type='radio', name="vote", value='{{awayName}}')
+                                span.mdl-radio__label {{awayName}}
+                            label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='{{objectId}}-2')
+                                input.mdl-radio__button(id="{{objectId}}-2" type='radio', name="vote", value='draw')
+                                span.mdl-radio__label Draw
+                            label.mdl-radio.mdl-js-radio.mdl-js-ripple-effect(for='{{objectId}}-3')
+                                input.mdl-radio__button(id="{{objectId}}-3" type='radio', name="vote", value='{{homeName}}')
+                                span.mdl-radio__label {{homeName}}
+                            .result-cont
+                            .mdl-card__actions.mdl-card--border
+                                button.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--accent.call-vote(type="submit") Vote
+
+            script(src="/js/client.js")
+            script(src="/js/init.js")

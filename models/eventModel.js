@@ -3,13 +3,7 @@
  */
 var mongoose = require('mongoose');
 
-var voteSchema = mongoose.Schema ({
-    byUser: Number,
-    vote: String,
-    addedAt: {type: Date, default: new Date}
-});
-
-var eventSchema = mongoose.Schema ({
+var eventSchema = mongoose.Schema({
     "awayName": String,
     "createdAt": Date,
     "group": String,
@@ -21,7 +15,13 @@ var eventSchema = mongoose.Schema ({
     "start": Date,
     "state": String,
     "updatedAt": Date,
-    "votes": [voteSchema]
+    "votes": [{
+        vote: String,
+        votedBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    }]
 });
 
 var Event = mongoose.model('Event', eventSchema);

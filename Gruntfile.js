@@ -4,15 +4,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-nodemon');
+    grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-postcss');
-    grunt.loadNpmTasks('grunt-develop');
 
     grunt.initConfig({
-        develop: {
-            server: {
-                file: 'app.js'
-            }
-        },
         jshint: {
             files: ['client/js/*.js'],
             options: {
@@ -68,9 +64,20 @@ module.exports = function(grunt) {
                     'client/public/js/index.js': ['client/js/*.js']
                 }
             }
+        },
+        nodemon: {
+          dev: {
+            script: 'app.js'
+          }
+        },
+        concurrent: {
+          options: {
+            logConcurrentOutput: true
+          },
+          tasks: ['nodemon', 'watch']
         }
     });
 
-    grunt.registerTask('default', ['develop:server', 'jshint', 'watch']);
+    grunt.registerTask('default', ['nodemon', 'jshint', 'watch']);
 
 };
