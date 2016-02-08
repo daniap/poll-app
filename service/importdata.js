@@ -13,7 +13,6 @@ var importevents = function(req, res) {
     }).then(function(res) {
         return res.json();
     }).then(function(result) {
-        console.log('yes' + result);
         var arr = result.results;
         arr.forEach(function (evt) {
             Event.findOneAndUpdate({objectId: evt.objectId}, evt, {upsert:true}, function(err, doc) {

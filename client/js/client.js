@@ -17,14 +17,16 @@ var EventView = Backbone.View.extend({
         'submit .vote-form': "addVote"
     },
     initialize: function() {
+        //return results as graphic for this event
         //this.model.on('change:votes', function() {}, this);
     },
     addVote: function(evt) {
         var that = this;
-        console.log('is form submit');
         var postData = _.object(_.map($(evt.target).serializeArray(), _.values));
         postData.byUser = "56b254dc6e49bc920df0dd00";
         postData.eventid = $(evt.target).data('form');
+
+        //submit results with ajax and update model with results
         $.ajax({
             type: 'POST',
             url: '/votes',
@@ -63,7 +65,6 @@ var EventView = Backbone.View.extend({
 var EventsColletionView = Backbone.View.extend({
     tagName: "div",
     className: "mdl-grid",
-
     initialize: function() {
         this.listenTo(this.collection, "reset", this.render);
     },
@@ -87,4 +88,4 @@ var RouterApp = Backbone.Router.extend({
         var view = new EventsColletionView({ collection: eventsColletion });
         $('#appContainer').html(view.render().el);
     }
-})
+});

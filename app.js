@@ -6,6 +6,7 @@ var routes = require('./routes');
 var logger = require('morgan');
 
 var app = express();
+var PORT = process.env.PORT || 3000;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'client/views'));
@@ -49,6 +50,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.listen(3300, function () {
-    console.log('app is runing');
+app.listen(PORT, function () {
+    console.log('Express listening on port ' + PORT + " !");
 });

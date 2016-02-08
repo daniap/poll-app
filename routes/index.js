@@ -37,13 +37,12 @@ router.post('/votes', function (req, res) {
 
     var body = _.pick(req.body, 'vote', 'byUser', 'eventid');
 
-    console.log('sutam sos datus' + req.body);
-
     Event.findOneAndUpdate({objectId: body.eventid},
                         {$push: {votes: {
                                     vote: body.vote,
                                     votedBy: body.byUser
-                                }}},
+                                }}
+                        },
                         {upsert: true}, function(err, data) {
                             if (err) {
                                 res.status(500).send();
